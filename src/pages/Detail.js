@@ -2,16 +2,13 @@ import { useParams } from "react-router-dom";
 import styled from 'styled-components';
 
 let YellowBtn  = styled.button`
-  background : yellow;
-  color : black;
+  background : ${ props => props.bg };
+  color : ${ props => props.bg == 'blue' ? 'white' : 'black' };
   padding : 10px;
 `
 
-let Box  = styled.div`
-  background : grey;
-  color : black;
-  padding :20px;
-`
+let NewBtn = styled.button(YellowBtn) //위에꺼 복붙 가능
+
 
 function Detail(props){
 
@@ -23,7 +20,7 @@ function Detail(props){
 
     return (
       <div className="container">
-          <YellowBtn>button</YellowBtn>
+          <YellowBtn bg="white">button</YellowBtn>
             <div className="row">
               <div className="col-md-6">
                 <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
