@@ -13,7 +13,7 @@ import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 
 function App() {
 
-  let [shoes] = useState(data)
+  let [shoes, ChangeShoes] = useState(data)
   let navigate = useNavigate(); //Hook (유용한 것들이 많이 있는 함수)
   
   //console.log(shoes[0].title)
@@ -38,17 +38,19 @@ function App() {
           <div className='main-bg'></div>
           <Container>
           <Row>
-          {
-            shoes.map(function(a,i){
-              return (
-                <Card shoes={shoes[i]} i={i+1} key={i} />
-              )
-            })
-          }
-        </Row>
-        </Container>
+            {
+              shoes.map(function(a,i){
+                return (
+                  <Card shoes={shoes[i]} i={i+1} key={i} />
+                )
+              })
+            }
+          </Row>
+          </Container>
+
         </div>}/>
-        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+        <Route path="/detail/:id" element={<Detail shoes={shoes} />}>
+        </Route>
 
         {/* Nested Routes */}
         <Route path="/about" element={<About />} >
