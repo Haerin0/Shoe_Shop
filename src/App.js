@@ -25,24 +25,18 @@ function App() {
         <Container>
           <Navbar.Brand href="#home">ShoeShop</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Cart</Nav.Link>
+            <Nav.Link onClick={()=> { navigate('/') }}>Home</Nav.Link>
+            <Nav.Link onClick={()=> { navigate('/detail') }}>Detail</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
-
-      <div className='main-bg'></div>
-      <Container>
-    
-    </Container>
-
-    <Link to="/">Home</Link> <br></br>
-    <Link to="/detail">상세 페이지</Link>
     
 
     <Routes>
         <Route path="/" element={
         <div>
+          <div className='main-bg'></div>
+          <Container>
           <Row>
           {
             shoes.map(function(a,i){
@@ -52,12 +46,43 @@ function App() {
             })
           }
         </Row>
+        </Container>
         </div>}/>
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+
+        {/* Nested Routes */}
+        <Route path="/about" element={<About />} >
+          <Route path="member" element={<div>member</div>} />
+          <Route path="location" element={<div>Location is...</div>} />
+        </Route>
+
+        <Route path="/event" element={<Event />}>
+          <Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>} />
+          <Route path="two" element={<div>생일기념 쿠폰 받기</div>} />
+        </Route>
+        <Route path="*" element={<div>없는 페이지 입니다.</div>} /> {/* 404페이지 */}
       </Routes>
 
     </div>
   );
+}
+
+function About(){
+  return (
+    <div>
+      <h4>회사 정보 페이지</h4>
+      <Outlet></Outlet>
+    </div>
+  )
+}
+
+function Event(){
+  return (
+    <div>
+      <h4>오늘의 이벤트</h4>
+      <Outlet></Outlet>
+    </div>
+  )
 }
 
 function Card(props){
