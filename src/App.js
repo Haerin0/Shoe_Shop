@@ -11,9 +11,8 @@ import data from './data';
 
 function App() {
 
-  // let [shoeInfo, shoeState] = useState(2);
   let [shoes] = useState(data)
-  console.log(shoes[0].title)
+  //console.log(shoes[0].title)
 
   return (
     <div className="App">
@@ -32,27 +31,32 @@ function App() {
       <div className='main-bg'></div>
       <Container>
         <Row>
-          <Products shoes={shoes} />
-          <Products shoes={shoes} />
-          <Products shoes={shoes} />
+          {
+            shoes.map(function(a,i){
+              return (
+                <Card shoes={shoes[i]} i={i+1} key={i} />
+              )
+            })
+          }
         </Row>
     </Container>
-
-
 
     </div>
   );
 }
 
-function Products(props){
+function Card(props){
   return (
-    <Col sm>
-        <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%" />
-        <h4>{props.shoes[0].title}</h4>
-        <p>상품 설명: {props.shoes[0].content}</p>
-        <p>가격: {props.shoes[0].price}</p>
+    <Col sm >
+        <img src={'https://codingapple1.github.io/shop/shoes'+ props.i + '.jpg'}
+        width="80%" />
+        <h4>{props.shoes.title}</h4>
+        <p>상품 설명: {props.shoes.content}</p>
+        <p>가격: {props.shoes.price}</p>
     </Col>
   )
 }
+
+
 
 export default App;
