@@ -7,11 +7,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import data from './data';
+import Detail from './pages/Detail';
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 
 
 function App() {
 
   let [shoes] = useState(data)
+  let navigate = useNavigate(); //Hook (유용한 것들이 많이 있는 함수)
+  
   //console.log(shoes[0].title)
 
   return (
@@ -22,15 +26,24 @@ function App() {
           <Navbar.Brand href="#home">ShoeShop</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="#features">Cart</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
 
       <div className='main-bg'></div>
       <Container>
-        <Row>
+    
+    </Container>
+
+    <Link to="/">Home</Link> <br></br>
+    <Link to="/detail">상세 페이지</Link>
+    
+
+    <Routes>
+        <Route path="/" element={
+        <div>
+          <Row>
           {
             shoes.map(function(a,i){
               return (
@@ -39,7 +52,9 @@ function App() {
             })
           }
         </Row>
-    </Container>
+        </div>}/>
+        <Route path="/detail" element={<Detail />} />
+      </Routes>
 
     </div>
   );
