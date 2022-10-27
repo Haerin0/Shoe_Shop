@@ -9,11 +9,12 @@ import Col from 'react-bootstrap/Col';
 import data from './data';
 import Detail from './pages/Detail';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
+import axios from 'axios'
 
 
 function App() {
 
-  let [shoes, ChangeShoes] = useState(data)
+  let [shoes, setShoes] = useState(data)
   let navigate = useNavigate(); //Hook (유용한 것들이 많이 있는 함수)
   
   //console.log(shoes[0].title)
@@ -46,7 +47,21 @@ function App() {
               })
             }
           </Row>
+          
           </Container>
+          <button onClick={()=>{
+            axios.get('https://codingapple1.github.io/shop/data2.json')
+            .then((result)=>{ 
+              let copy = [...shoes, ...result.data]; //concat()대신 사용
+              setShoes(copy)
+            })
+            .catch(()=>{
+              console.log('failed')
+            })
+
+            
+
+          }}>button</button>
 
         </div>}/>
         <Route path="/detail/:id" element={<Detail shoes={shoes} />}>
