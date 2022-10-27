@@ -1,26 +1,38 @@
+import React, { useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from 'styled-components';
 
-let YellowBtn  = styled.button`
-  background : ${ props => props.bg };
-  color : ${ props => props.bg == 'blue' ? 'white' : 'black' };
-  padding : 10px;
-`
+// let Box = styled.div`
+//   padding : 20px;
+//   color : grey
+// `;
 
-let NewBtn = styled.button(YellowBtn) //위에꺼 복붙 가능
+function Detail(props){ // mount, update시 이 코드 실행됨
+
+  useEffect(()=>{
+    let timer = setTimeout(()=> { setAlert(false)}, 2000)
+    return ()=> {
+      clearTimeout(timer)
+    }
+  },[])
 
 
-function Detail(props){
+  let [count, setCount] = useState(0)
+  let [alert, setAlert] = useState(true)
 
   let {id} = useParams();
   let found = props.shoes.find(function(x){
     return x.id == id
   });
   
-
     return (
       <div className="container">
-          <YellowBtn bg="white">button</YellowBtn>
+        {
+          alert == true ? 
+          <div className="alert alert-warning">2초이내 구매시 할인</div> : null
+        }
+          {count}
+        <button onClick={()=> { setCount(count+1) }}>button</button>
             <div className="row">
               <div className="col-md-6">
                 <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
@@ -32,8 +44,11 @@ function Detail(props){
                 <button className="btn btn-danger">주문하기</button> 
               </div>
             </div>
-     </div> 
+
+            </div>
     )
   }
+
+
 
   export default Detail;
