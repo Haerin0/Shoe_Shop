@@ -10,6 +10,7 @@ import data from './data';
 import Detail from './pages/Detail';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import axios from 'axios'
+import Cart from './pages/Cart';
 
 
 function App() {
@@ -66,6 +67,8 @@ function App() {
         </div>}/>
         <Route path="/detail/:id" element={<Detail shoes={shoes} />}>
         </Route>
+
+        <Route path='/cart' element={<Cart/>} />
 
         {/* Nested Routes */}
         <Route path="/about" element={<About />} >
