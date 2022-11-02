@@ -3,6 +3,7 @@ import { Nav, Navbar, Row, Col, Container } from 'react-bootstrap';
 import { useState } from 'react';
 import  data  from './data';
 import { Routes, Route, Link } from 'react-router-dom'
+import  Detail  from './Detail';
 
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
             </Row>
           </Container>
         </div>} />
-        <Route  path='/detail' element={<div>detail page</div>} />
+        <Route  path='/detail' element={<Detail />} />
       </Routes>
 
     </div>
