@@ -1,13 +1,16 @@
 import './App.css';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Nav, Navbar, Row, Col, Container } from 'react-bootstrap';
+import { useState } from 'react';
+import  data  from './data';
+
 
 function App() {
+
+  let [shoes] = useState(data)
+
   return (
     <div className="App">
+      
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">Shoe Shop</Navbar.Brand>
@@ -22,29 +25,28 @@ function App() {
 
       <Container>
         <Row>
-          <Col sm>
-            <img src='https://codingapple1.github.io/shop/shoes1.jpg'  width="80%" />
-            <h4>상품명</h4>
-            <p>상품 설명</p>
-          </Col>
-
-          <Col sm>
-            <img src='https://codingapple1.github.io/shop/shoes2.jpg' width="80%" />
-            <h4>상품명</h4>
-            <p>상품 설명</p>
-          </Col>
-
-          <Col sm>
-            <img src='https://codingapple1.github.io/shop/shoes3.jpg' width="80%" />
-            <h4>상품명</h4>
-            <p>상품 설명</p>
-          </Col>
-
+          {
+            shoes.map((a,i)=>{
+              return (
+                <Card shoes={shoes[i]} i={i+1} key={i} />
+              )
+            })
+          }
         </Row>
       </Container>
 
     </div>
   );
+}
+
+function Card(props){
+  return (
+      <Col sm>
+            <img src={'https://codingapple1.github.io/shop/shoes' + props.i + '.jpg'} width="80%" />
+            <h4>{props.shoes.title}</h4>
+            <p>{props.shoes.price}</p>
+      </Col>
+  )
 }
 
 
