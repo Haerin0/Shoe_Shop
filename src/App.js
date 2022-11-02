@@ -15,16 +15,9 @@ import Cart from './pages/Cart';
 
 function App() {
 
-<<<<<<< HEAD
-  let [shoes, setShoes] = useState(data)
-  let navigate = useNavigate(); //Hook (유용한 것들이 많이 있는 함수)
-  
-  //console.log(shoes[0].title)
-=======
   // let [shoeInfo, shoeState] = useState(2);
   let [shoes] = useState(data)
   console.log(shoes[0].title)
->>>>>>> parent of 9f52cd6 (card section added)
 
   return (
     <div className="App">
@@ -40,56 +33,6 @@ function App() {
       </Navbar>
     
 
-<<<<<<< HEAD
-    <Routes>
-        <Route path="/" element={
-        <div>
-          <div className='main-bg'></div>
-          <Container>
-          <Row>
-            {
-              shoes.map(function(a,i){
-                return (
-                  <Card shoes={shoes[i]} i={i+1} key={i} />
-                )
-              })
-            }
-          </Row>
-          
-          </Container>
-          <button onClick={()=>{
-            axios.get('https://codingapple1.github.io/shop/data2.json')
-            .then((result)=>{ 
-              let copy = [...shoes, ...result.data]; //concat()대신 사용
-              setShoes(copy)
-            })
-            .catch(()=>{
-              console.log('failed')
-            })
-
-            
-
-          }}>button</button>
-
-        </div>}/>
-        <Route path="/detail/:id" element={<Detail shoes={shoes} />}>
-        </Route>
-
-        <Route path='/cart' element={<Cart/>} />
-
-        {/* Nested Routes */}
-        <Route path="/about" element={<About />} >
-          <Route path="member" element={<div>member</div>} />
-          <Route path="location" element={<div>Location is...</div>} />
-        </Route>
-
-        <Route path="/event" element={<Event />}>
-          <Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>} />
-          <Route path="two" element={<div>생일기념 쿠폰 받기</div>} />
-        </Route>
-        <Route path="*" element={<div>없는 페이지 입니다.</div>} /> {/* 404페이지 */}
-      </Routes>
-=======
       <div className='main-bg'></div>
       <Container>
         <Row>
@@ -98,7 +41,6 @@ function App() {
           <Products shoes={shoes} />
         </Row>
     </Container>
->>>>>>> parent of 9f52cd6 (card section added)
 
 
 
@@ -106,29 +48,7 @@ function App() {
   );
 }
 
-<<<<<<< HEAD
-function About(){
-  return (
-    <div>
-      <h4>회사 정보 페이지</h4>
-      <Outlet></Outlet>
-    </div>
-  )
-}
-
-function Event(){
-  return (
-    <div>
-      <h4>오늘의 이벤트</h4>
-      <Outlet></Outlet>
-    </div>
-  )
-}
-
-function Card(props){
-=======
 function Products(props){
->>>>>>> parent of 9f52cd6 (card section added)
   return (
     <Col sm>
         <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%" />
