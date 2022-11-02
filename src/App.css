@@ -13,6 +13,13 @@
   }
 }
 
+#nav_link {
+  text-decoration: none;
+  color: rgb(146, 145, 145);
+  font-size: 18px;
+  margin-left: 20px;
+}
+
 .main-bg {
   height: 200px;
   background-image: url('./img/bg.png');

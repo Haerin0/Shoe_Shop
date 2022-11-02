@@ -2,6 +2,7 @@ import './App.css';
 import { Nav, Navbar, Row, Col, Container } from 'react-bootstrap';
 import { useState } from 'react';
 import  data  from './data';
+import { Routes, Route, Link } from 'react-router-dom'
 
 
 function App() {
@@ -15,25 +16,31 @@ function App() {
         <Container>
           <Navbar.Brand href="#home">Shoe Shop</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#cart">Cart</Nav.Link>
+            <Link to="/" id="nav_link">Home</Link>
+            <Link to="/detail" id="nav_link">Cart</Link>
           </Nav>
         </Container>
       </Navbar>
 
-      <div className='main-bg'></div>
-
-      <Container>
-        <Row>
-          {
-            shoes.map((a,i)=>{
-              return (
-                <Card shoes={shoes[i]} i={i+1} key={i} />
-              )
-            })
-          }
-        </Row>
-      </Container>
+      {/* 페이지 나누는 코드 html여러개 만들지 않고 라우트 만들기 */}
+      <Routes>
+        <Route  path='/' element={
+        <div>
+          <div className='main-bg'></div>
+          <Container>
+            <Row>
+              {
+                shoes.map((a,i)=>{
+                  return (
+                    <Card shoes={shoes[i]} i={i+1} key={i} />
+                  )
+                })
+              }
+            </Row>
+          </Container>
+        </div>} />
+        <Route  path='/detail' element={<div>detail page</div>} />
+      </Routes>
 
     </div>
   );
