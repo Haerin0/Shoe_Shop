@@ -15,10 +15,16 @@ import Cart from './pages/Cart';
 
 function App() {
 
+<<<<<<< HEAD
   let [shoes, setShoes] = useState(data)
   let navigate = useNavigate(); //Hook (유용한 것들이 많이 있는 함수)
   
   //console.log(shoes[0].title)
+=======
+  // let [shoeInfo, shoeState] = useState(2);
+  let [shoes] = useState(data)
+  console.log(shoes[0].title)
+>>>>>>> parent of 9f52cd6 (card section added)
 
   return (
     <div className="App">
@@ -34,6 +40,7 @@ function App() {
       </Navbar>
     
 
+<<<<<<< HEAD
     <Routes>
         <Route path="/" element={
         <div>
@@ -82,11 +89,24 @@ function App() {
         </Route>
         <Route path="*" element={<div>없는 페이지 입니다.</div>} /> {/* 404페이지 */}
       </Routes>
+=======
+      <div className='main-bg'></div>
+      <Container>
+        <Row>
+          <Products shoes={shoes} />
+          <Products shoes={shoes} />
+          <Products shoes={shoes} />
+        </Row>
+    </Container>
+>>>>>>> parent of 9f52cd6 (card section added)
+
+
 
     </div>
   );
 }
 
+<<<<<<< HEAD
 function About(){
   return (
     <div>
@@ -106,17 +126,17 @@ function Event(){
 }
 
 function Card(props){
+=======
+function Products(props){
+>>>>>>> parent of 9f52cd6 (card section added)
   return (
-    <Col sm >
-        <img src={'https://codingapple1.github.io/shop/shoes'+ props.i + '.jpg'}
-        width="80%" />
-        <h4>{props.shoes.title}</h4>
-        <p>상품 설명: {props.shoes.content}</p>
-        <p>가격: {props.shoes.price}</p>
+    <Col sm>
+        <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%" />
+        <h4>{props.shoes[0].title}</h4>
+        <p>상품 설명: {props.shoes[0].content}</p>
+        <p>가격: {props.shoes[0].price}</p>
     </Col>
   )
 }
-
-
 
 export default App;
