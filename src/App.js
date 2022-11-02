@@ -2,13 +2,14 @@ import './App.css';
 import { Nav, Navbar, Row, Col, Container } from 'react-bootstrap';
 import { useState } from 'react';
 import  data  from './data';
-import { Routes, Route, Link } from 'react-router-dom'
-import  Detail  from './Detail';
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
+import  Detail  from './routes/Detail';
 
 
 function App() {
 
   let [shoes] = useState(data)
+  let navigate = useNavigate(); //페이지 이동을 도와주는 함수
 
   return (
     <div className="App">
@@ -17,8 +18,8 @@ function App() {
         <Container>
           <Navbar.Brand href="#home">Shoe Shop</Navbar.Brand>
           <Nav className="me-auto">
-            <Link to="/" id="nav_link">Home</Link>
-            <Link to="/detail" id="nav_link">Cart</Link>
+            <Nav.Link onClick={()=>{ navigate('/') }}>Home</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('detail') }}>Detail</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -41,10 +42,24 @@ function App() {
           </Container>
         </div>} />
         <Route  path='/detail' element={<Detail />} />
+        <Route  path='*' element={<div>없는 페이지 입니다.</div>} />
+        <Route path="/about" element={ <About/> } >  
+        <Route path="member" element={ <div>멤버들</div> } />
+        <Route path="location" element={ <div>회사위치</div> } />
+      </Route>
       </Routes>
 
     </div>
   );
+}
+
+function About() {
+  return (
+    <div>
+      <h4>회사 정보</h4>
+      <Outlet></Outlet>
+    </div>
+  )
 }
 
 function Card(props){
