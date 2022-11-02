@@ -41,7 +41,7 @@ function App() {
             </Row>
           </Container>
         </div>} />
-        <Route  path='/detail' element={<Detail />} />
+        <Route  path='/detail/:id' element={<Detail shoes={shoes} />} />
         <Route  path='*' element={<div>없는 페이지 입니다.</div>} />
         <Route path="/about" element={ <About/> } >  
         <Route path="member" element={ <div>멤버들</div> } />
